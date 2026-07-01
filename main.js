@@ -151,9 +151,9 @@ document.addEventListener('mouseleave', (e) => {
 =========================================================== */
 
 const ASSUMPTIONS = {
-  unitsPerKwPerDay: 4,       // avg units generated per kW per day (India avg)
-  costPerKw: 55000,          // ₹ installed cost per kW before subsidy
-  panelWattage: 540,         // watts per panel
+  unitsPerKwPerDay: 4.5,       // avg units generated per kW per day (India avg)
+  costPerKw: 65000,          // ₹ installed cost per kW before subsidy
+  panelWattage: 550,         // watts per panel
   co2PerUnitKg: 0.82,        // kg CO2 offset per unit generated
   subsidy: {
     // simplified central subsidy slabs (residential only, ₹)
