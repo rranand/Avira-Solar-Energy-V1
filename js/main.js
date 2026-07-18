@@ -10,6 +10,7 @@ function animateCounters() {
   document.querySelectorAll('[data-count]').forEach(el => {
     const isDecimal = el.hasAttribute('data-decimal');
     const target = parseFloat(el.getAttribute('data-count'));
+    const hasPlus = el.getAttribute('data-count').endsWith('+');
     let current = 0;
     const steps = 40;
     const increment = target / steps;
@@ -18,7 +19,7 @@ function animateCounters() {
       frame++;
       current += increment;
       if (frame >= steps) {
-        el.textContent = isDecimal ? target.toFixed(1) : Math.round(target).toLocaleString('en-IN');
+        el.textContent = (isDecimal ? target.toFixed(1) : Math.round(target).toLocaleString('en-IN')) + (hasPlus ? '+' : '');
         return;
       }
       el.textContent = isDecimal ? current.toFixed(1) : Math.round(current).toLocaleString('en-IN');
