@@ -25,9 +25,9 @@ function openResidentialType(key) {
       <div class="type-lead">
         <h4>Want a quote for ${t.title}?</h4>
         <form onsubmit="submitTypeLead(event, '${t.title}')">
-          <div class="field"><label>Name</label><input required id="typeLeadName" placeholder="Your name"></div>
-          <div class="field"><label>Mobile Number</label><input required id="typeLeadPhone" placeholder="Mobile number"></div>
-          <div class="field"><label>Address</label><input required id="typeLeadAddress" placeholder="Your address / city"></div>
+          <div class="field"><label>Name</label><input required id="typeLeadName" type="text" minlength="3" maxlength="50" placeholder="Your name"></div>
+          <div class="field"><label>Mobile Number</label><input required id="typeLeadPhone" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" title="Enter a valid 10-digit Indian mobile number" placeholder="Mobile number"></div>
+          <div class="field"><label>Address</label><input required id="typeLeadAddress" type="text" minlength="2" maxlength="150" placeholder="Your address / city"></div>
           <button class="calc-submit" type="submit">Send My Details →</button>
         </form>
       </div>

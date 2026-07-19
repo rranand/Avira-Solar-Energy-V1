@@ -3,7 +3,7 @@
 =========================================================== */
 
 const WHATSAPP_NUMBER = "918529419240"; 
-const SHEET_URL = "https://script.google.com/macros/s/AKfycbxzo-3vfpQiO9dDbZJpYSnIfUuLaRwaZ014g6jUmBjR47wq5YixKQa1-RAUzPWSVeit/exec";
+ const SHEET_URL ="";// "https://script.google.com/macros/s/AKfycbxzo-3vfpQiO9dDbZJpYSnIfUuLaRwaZ014g6jUmBjR47wq5YixKQa1-RAUzPWSVeit/exec";
 
 // ---------- Animated stat counters ----------
 function animateCounters() {
@@ -54,8 +54,6 @@ setTimeout(() => {
 let lastResult = null;
 
 function runCalculator() {
-  lastResult = null;
-
   const bill = parseFloat(document.getElementById('bill').value) || 0;
   const rate = parseFloat(document.getElementById('rate').value) || 0;
   const propType = document.getElementById('propType').value;
@@ -69,14 +67,16 @@ function runCalculator() {
   }
 
   if (rate <= 0) {
-    alert('Rate must be greater than 0');
+    alert('Please enter your electricity rate (₹/unit).');
     return;
   }
 
-  if (roofArea < 0) {
-    alert('Roof area cannot be negative');
+  if (roofArea <= 0) {
+    alert('Please enter your available roof area in square feet.');
     return;
   }
+
+  lastResult = null;
 
   const r = calculateSolar({ bill, rate, propType, roofArea });
   lastResult = {
@@ -296,9 +296,9 @@ function openCommercialInfo() {
       <div class="type-lead">
         <h4>Want a quote for your business?</h4>
         <form onsubmit="submitTypeLead(event, 'Commercial Solar')">
-          <div class="field"><label>Name</label><input required id="typeLeadName" placeholder="Your name"></div>
-          <div class="field"><label>Mobile Number</label><input required id="typeLeadPhone" placeholder="Mobile number"></div>
-          <div class="field"><label>Address</label><input required id="typeLeadAddress" placeholder="Business address / city"></div>
+          <div class="field"><label>Name</label><input required id="typeLeadName" type="text" minlength="3" maxlength="50" placeholder="Your name"></div>
+          <div class="field"><label>Mobile Number</label><input required id="typeLeadPhone" type="tel" inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" title="Enter a valid 10-digit Indian mobile number" placeholder="Mobile number"></div>
+          <div class="field"><label>Address</label><input required id="typeLeadAddress" type="text" minlength="2" maxlength="150" placeholder="Business address / city"></div>
           <button class="calc-submit" type="submit">Send My Details →</button>
         </form>
       </div>
